@@ -17,3 +17,11 @@ const fibMem = (n) => {
 
   return helper(n)
 }
+
+const mem = (fn) => {
+  let cache = {}
+  return function() {
+    const args = Array.prototype.slice.call(arguments)
+    return args in cache ? cache[args] : (cache[args] = fn.apply(this, args))
+  }
+}
