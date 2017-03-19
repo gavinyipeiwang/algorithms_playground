@@ -79,3 +79,48 @@ var getRow = function(rowIndex) {
   }
   return row
 };
+
+/**
+ * time complexity must be O(n)
+ * @param {number[]} nums
+ * @return {number}
+ */
+var thirdMax = function(nums) {
+  let [first, second, third] = [Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER]
+  nums.forEach((x) => {
+    if (x !== first && x !== second && x !== third) {
+      if (x > first) {
+        third = second
+        second = first
+        first = x
+      } else if (x > second) {
+        third = second
+        second = x
+      } else if (x > third) {
+        third = x
+      }
+    }
+  })
+  return third === Number.MIN_SAFE_INTEGER ? first : third
+};
+/**
+ * Given a non-negative integer represented as a non-empty array of digits, plus one to the integer.
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+  if (digits && digits.length) {
+    let result = []
+    let carry = 1
+    for (let i = digits.length - 1; i >= 0; i--) {
+      let tmp = digits[i] + carry
+      carry = tmp > 9 ? 1 : 0
+      result.unshift(tmp > 9 ? tmp - 10 : tmp)
+    }
+    if (carry === 1) {
+      result.unshift(1)
+    }
+    return result
+  }
+  return null
+};
