@@ -124,3 +124,70 @@ var plusOne = function(digits) {
   }
   return null
 };
+/**
+ * Given a sorted array, remove the duplicates in place such that each element appear only once and return the new length.
+ * Do not allocate extra space for another array, you must do this in place with constant memory.
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+  if (nums && nums.length) {
+    let index = 0
+    for (let i = 1; i < nums.length; i++) {
+      if (nums[i] !== nums[index]) {
+        index += 1
+        nums[index] = nums[i]
+      }
+    }
+    return index + 1
+  }
+  return null
+};
+/**
+ * Given an array and a value, remove all instances of that value in place and return the new length.
+ * Do not allocate extra space for another array, you must do this in place with constant memory.
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+  if (nums && nums.length) {
+    let index = 0
+    for (let i = 0; i < nums.length; i++) {
+      if (nums[i] !== val) {
+        nums[index] = nums[i]
+        index += 1
+      }
+    }
+    return index
+  }
+  return null
+};
+/**
+ * Say you have an array for which the ith element is the price of a given stock on day i.
+ * Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the
+ * stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy
+ * again).
+ * [1, 2, 3, 4, 5]
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+  if (prices && prices.length) {
+    let total = 0,
+      profit = 0,
+      purchaseDay = 0
+    for (let i = 1; i < prices.length; i++) {
+      let profitIfSell = prices[i] - prices[purchaseDay]
+      if (profitIfSell > profit) {
+        total += (profitIfSell - profit)
+        profit = profitIfSell
+      } else {
+        purchaseDay = i
+        profit = 0
+      }
+    }
+    return total
+  }
+  return 0
+};
