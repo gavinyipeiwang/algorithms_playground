@@ -191,3 +191,24 @@ var maxProfit = function(prices) {
   }
   return 0
 };
+/**
+ * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+ * Given nums = [0, 1, 3] return 2.
+ * @param {number[]} nums
+ * @return {number}
+ */
+var missingNumber = function(nums) {
+  if (nums && nums.length) {
+    const n = nums.length
+    return n * (n + 1) / 2 - nums.reduce((acc, curr) => acc + curr, 0)
+  }
+  return null
+};
+var missingNumber2 = function(nums) {
+  if (nums && nums.length) {
+    let xor = 0
+    nums.forEach((x, i) => xor = xor ^ x ^ i)
+    return xor ^ nums.length
+  }
+  return null
+};
