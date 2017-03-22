@@ -116,6 +116,7 @@ var findAnagrams = function(s, p) {
         if (map[s.charAt(left)] >= 0) {
           count++
         }
+        //if left was in p, then add it back
         map[s.charAt(left)]++;
         left++
       }
