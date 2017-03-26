@@ -212,3 +212,26 @@ var missingNumber2 = function(nums) {
   }
   return null
 };
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var sortColors = function(nums) {
+  if (nums && nums.length) {
+    //count
+    let [red, white] = [0, 0]
+    for (let i = 0; i < nums.length; i++) {
+      if (nums[i] === 0) {
+        nums[red] = 0
+        red++
+      } else if (nums[i] === 1) {
+        white++
+      }
+    }
+    for (let j = red; j < nums.length; j++) {
+      nums[j] = j < (red + white) ? 1 : 2
+    }
+    return nums
+  }
+  return null
+};
