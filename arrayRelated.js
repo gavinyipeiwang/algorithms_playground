@@ -231,7 +231,5 @@ var sortColors = function(nums) {
     for (let j = red; j < nums.length; j++) {
       nums[j] = j < (red + white) ? 1 : 2
     }
-    return nums
   }
-  return null
 };

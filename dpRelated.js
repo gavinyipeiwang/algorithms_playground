@@ -67,3 +67,4 @@ const changeMakingProblem = (n, m) => {
   }
   return minArray[n]
 }
+
